@@ -1,0 +1,29 @@
+{
+  "name": "react-tutorial-tictactoe",
+  "version": "1.0.0",
+  "description": "React tutorial creating a Tic Tac Toe game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "0.8.5"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eugenesia/react-tutorial-tictactoe.git"
+  },
+  "author": "Eugene Sia <eugene@eugenesia.co.uk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eugenesia/react-tutorial-tictactoe/issues"
+  },
+  "homepage": "https://github.com/eugenesia/react-tutorial-tictactoe#readme"
+}
