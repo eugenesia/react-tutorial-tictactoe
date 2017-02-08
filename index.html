@@ -2,6 +2,7 @@
 <head>
   <title>Tic Tac Toe - React tutorial</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://unpkg.com/react@15/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
 </head>
@@ -43,6 +44,12 @@
       old.apply(this, arguments);
     }
   })(console.error);
+</script>
+<script type="text/babel">
+  ReactDOM.render(
+    <div>Hello there</div>,
+    document.getElementById('container')
+  );
 </script>
 </body>
 </html>
