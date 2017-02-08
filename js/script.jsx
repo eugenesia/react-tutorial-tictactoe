@@ -13,7 +13,8 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => this.setState({value: 'X'})}>
+      // Execute function passed in on click.
+      <button className="square" onClick={() => this.props.onClick()}>
         {this.props.value}
       </button>
     );
@@ -31,8 +32,19 @@ class Board extends React.Component {
     };
   }
 
+  handleClick(i) {
+    // Call slice() to copy squares array instead of mutating existing array.
+    // Immutability is important.
+    const squares = this.state.squares.slice();
+    // Mark clicked square with an 'X'.
+    squares[i] = 'X';
+    // Update state with clicked square.
+    this.setState({squares: squares});
+  }
+
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} />;
+    // Pass in function to call on clicking Square.
+    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
   }
 
   render() {
