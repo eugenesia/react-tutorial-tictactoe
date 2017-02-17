@@ -15,16 +15,6 @@ function Square(props) {
 
 class Board extends React.Component {
 
-  constructor() {
-    super();
-    // Keep state of each child Square.
-    this.state = {
-      squares: Array(9).fill(null),
-      // Whether the next move is for "X" player.
-      xIsNext: true,
-    };
-  }
-
   handleClick(i) {
     // Call slice() to copy squares array instead of mutating existing array.
     // Immutability is important.
@@ -33,7 +23,7 @@ class Board extends React.Component {
     // Return early if someone already won.
     // Or if the square is already filled (don't allow overwriting filled
     // square).
-    if (calculateWinner(this.state.squares) || squares[i]) {
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
 
@@ -87,6 +77,16 @@ class Board extends React.Component {
 
 
 class Game extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
+
   render() {
     return (
       <div className="game">
