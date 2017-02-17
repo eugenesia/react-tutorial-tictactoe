@@ -25,7 +25,6 @@ class Board extends React.Component {
     // Display/update the whole board of squares.
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
