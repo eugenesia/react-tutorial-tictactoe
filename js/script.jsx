@@ -15,6 +15,16 @@ function Square(props) {
 
 class Board extends React.Component {
 
+  constructor() {
+    super();
+    // Keep state of each child Square.
+    this.state = {
+      squares: Array(9).fill(null),
+      // Whether the next move is for "X" player.
+      xIsNext: true,
+    };
+  }
+
   handleClick(i) {
     // Call slice() to copy squares array instead of mutating existing array.
     // Immutability is important.
