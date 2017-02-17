@@ -44,7 +44,16 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    // Check if someone has won.
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+
+    // Display/update the whole board of squares.
     return (
       <div>
         <div className="status">{status}</div>
@@ -94,6 +103,7 @@ ReactDOM.render(
 );
 
 
+// Calculate the winner of the game, whether 'X' or 'O'.
 function calculateWinner(squares) {
 
   // Winning combinations of squares.
