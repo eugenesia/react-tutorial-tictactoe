@@ -53,6 +53,8 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
+        // Record the square that was clicked, corresponding to this move.
+        moveSquare: null,
       }],
       // Whether 'X' is the next player to move.
       xIsNext: true,
@@ -83,6 +85,8 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        // Record the square that was clicked, corresponding to this move.
+        moveSquare: i,
       }]),
       xIsNext: ! this.state.xIsNext,
       stepNumber: history.length,
@@ -110,8 +114,15 @@ class Game extends React.Component {
     }
 
     const moves = history.map((step, move) => {
+      const moveSquare = step.moveSquare;
+
+      // Get the col and row of the move
+      // e.g. (row 1, col 3) instead of 6 (the index).
+      const moveCol = (moveSquare % 3) + 1;
+      const moveRow = Math.floor(moveSquare / 3) + 1;
+
       const desc = move ?
-        'Move #' + move :
+        'Move #' + move  + ' (' + moveCol + ', ' + moveRow + ')':
         'Game start';
       return (
         <li key={move}>
