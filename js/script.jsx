@@ -6,7 +6,7 @@ function Square(props) {
 
   return (
     // Execute function passed in on click.
-    <button className="square" onClick={() => props.onClick()})>
+    <button className="square" onClick={() => props.onClick()}>
       {props.value}
     </button>
   );
@@ -20,6 +20,8 @@ class Board extends React.Component {
     // Keep state of each child Square.
     this.state = {
       squares: Array(9).fill(null),
+      // Whether the next move is for "X" player.
+      xIsNext: true,
     };
   }
 
@@ -28,9 +30,12 @@ class Board extends React.Component {
     // Immutability is important.
     const squares = this.state.squares.slice();
     // Mark clicked square with an 'X'.
-    squares[i] = 'X';
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
     // Update state with clicked square.
-    this.setState({squares: squares});
+    this.setState({
+      squares: squares,
+      xIsNext: ! this.state.xIsNext,
+    });
   }
 
   renderSquare(i) {
@@ -39,7 +44,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     return (
       <div>
         <div className="status">{status}</div>
