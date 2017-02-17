@@ -54,13 +54,16 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
+      // Whether 'X' is the next player to move.
       xIsNext: true,
+      // Which step in the move history we're at.
+      stepNumber: 0,
     };
   }
 
   handleClick(i) {
-    const history = this.state.history;
-    const current = history[history.length - 1];
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[this.state.stepNumber];
 
     // Call slice() to copy squares array instead of mutating existing array.
     // Immutability is important.
@@ -82,12 +85,21 @@ class Game extends React.Component {
         squares: squares,
       }]),
       xIsNext: ! this.state.xIsNext,
+      stepNumber: history.length,
+    });
+  }
+
+  // Jump to a specific step in the move history list.
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) ? false : true,
     });
   }
 
   render() {
     const history = this.state.history;
-    const current = history[history.length - 1];
+    const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
     let status;
