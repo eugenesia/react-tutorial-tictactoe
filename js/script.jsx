@@ -29,6 +29,14 @@ class Board extends React.Component {
     // Call slice() to copy squares array instead of mutating existing array.
     // Immutability is important.
     const squares = this.state.squares.slice();
+
+    // Return early if someone already won.
+    // Or if the square is already filled (don't allow overwriting filled
+    // square).
+    if (calculateWinner(this.state.squares) || squares[i]) {
+      return;
+    }
+
     // Mark clicked square with an 'X'.
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     // Update state with clicked square.
