@@ -2,23 +2,14 @@
  * Define classes.
  */
 
-class Square extends React.Component {
+function Square(props) {
 
-  constructor() {
-    super();
-    this.state = {
-      value: null,
-    };
-  }
-
-  render() {
-    return (
-      // Execute function passed in on click.
-      <button className="square" onClick={() => this.props.onClick()}>
-        {this.props.value}
-      </button>
-    );
-  }
+  return (
+    // Execute function passed in on click.
+    <button className="square" onClick={() => props.onClick()})>
+      {props.value}
+    </button>
+  );
 }
 
 
