@@ -122,10 +122,16 @@ class Game extends React.Component {
       const moveRow = Math.floor(moveSquare / 3) + 1;
 
       const desc = move ?
-        'Move #' + move  + ' (' + moveCol + ', ' + moveRow + ')':
+        '#' + move  + ' (' + moveCol + ', ' + moveRow + ')':
         'Game start';
+
+      let className = '';
+      if (move === this.state.stepNumber) {
+        className = 'game-info__move--current';
+      }
+
       return (
-        <li key={move}>
+        <li key={move} className={className}>
           <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
         </li>
       );

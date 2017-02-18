@@ -49,3 +49,8 @@ ol, ul {
   margin-left: 20px;
 }
 
+/* Current move */
+.game-info__move--current {
+  font-weight: bold;
+}
+
